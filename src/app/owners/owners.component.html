@@ -1,0 +1,15 @@
+<h1> Owners </h1>
+
+<div>
+    <button (click)="sortA()">Sort Ascending</button>
+    <button (click)="sortD()">Sort Descending </button>
+</div>    
+
+<div class="page-list">
+    <div class="page-list-item" *ngFor="let owner of currentPageItems">
+            <img src="{{owner.img}}" width="35" />
+        <a routerLink="/owners/:{{owner.id}}">{{owner.name}}</a>
+    </div>
+</div>
+
+<a routerLink="/owners/all/p/:{{currentPage <= maxPage ? currentPage + 1: 1}}" (click)="nextPage()">Next >></a>

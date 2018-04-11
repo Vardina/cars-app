@@ -1,0 +1,11 @@
+<h1>Home</h1>
+
+<div class="home-wrapper">
+    <div class="car-item" *ngFor="let car of cars | slice:0:6">
+        <img src="{{car.img}}" width="300" />
+        <div class="detials">
+            <a routerLink="/cars/:{{car.id}}">{{car.make}} - {{car.model}} </a><br />
+            {{car.date}}
+        </div>
+    </div>
+</div>

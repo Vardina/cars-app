@@ -1,0 +1,40 @@
+.comment-form {
+    width: 100%;
+    max-width: none;
+}
+
+.comment-form input {
+    height: 40px;
+    border-radius: 5px;
+    width: 60%;
+}
+
+.comment-form .form-item {
+    margin-bottom: 0;
+}
+
+.comment-btn-wrapper {
+    margin-bottom: 20px;
+}
+
+.comment-btn-wrapper button {
+    background: #229494;
+    padding: 10px 26px;
+}
+
+#user-comment {
+    position: relative;
+    padding: 30px 40px;
+    border: 2px solid #949394;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    display: none;
+    min-height: 18px;
+}
+
+#user-comment button {
+    position: absolute;
+    right: 20px;
+    top: 22px;
+    padding: 5px 10px;
+}

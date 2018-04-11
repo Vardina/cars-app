@@ -1,0 +1,47 @@
+<div *ngIf="owner">
+    <h1>{{owner.name}}</h1>
+    <img src="{{owner.img}}" /> <br />
+    <b>id:</b>{{owner.id}}
+    <br />
+    
+    <button (click)="showEditMode()" class="edit-btn">Edit owner</button>
+    <button (click)="showReadonlyMode()" class="edit-btn">Save locally</button>
+
+    <form #ownerForm="ngForm" name="ownerForm" (submit)="editOwner()" id="edit-form">
+        <label for="name">Name:</label>
+        <input 
+            type="text"
+            name="name"
+            id="name"
+            required
+            [(ngModel)]="owner.name"
+            #name="ngModel"
+        />
+        <br />
+        <small [hidden]="name.valid || name.pristine">The field is required.</small>
+        <br />
+        <label for="id">Id:</label>
+        <input 
+            type="text"
+            name="id"
+            id="id"
+            required
+            [(ngModel)]="owner.id"
+            #id="ngModel"
+        />
+        <br />
+        <small [hidden]="id.valid || id.pristine">The field is required.</small>
+        <br />
+
+        <button type="submit" class="edit-btn">Save on server</button>
+    </form>
+
+    <h3>Cars:</h3>
+    <div class="page-list">
+        <div *ngFor="let car of owner.cars" class="page-list-item" >
+            {{car.make}} {{car.model}}
+        </div>
+    </div>
+</div>
+
+<!-- Issues with routing: -->

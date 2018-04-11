@@ -1,0 +1,15 @@
+<h1>Cars</h1>
+
+<div>
+    <button (click)="sortByMake()">Sort by make</button>
+    <button (click)="sortByOwner()">Sort by owner </button>
+    <button (click)="sortByDate()">Sort by date </button>
+</div>  
+
+<div class="page-list">
+  <div class="page-list-item" *ngFor="let car of currentPageItems">
+      <a routerLink="/cars/:{{car.id}}">{{car.make}} {{car.model}}</a> - {{car.owner}} - {{car.date}}
+  </div>
+</div>
+
+<a routerLink="/cars/all/p/:{{currentPage <= maxPage ? currentPage + 1: 1}}" (click)="nextPage()">Next >></a>

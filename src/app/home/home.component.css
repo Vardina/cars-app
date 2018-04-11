@@ -1,0 +1,11 @@
+.car-item {
+    display: inline-block;
+    float: left;
+    width: 30%;
+    height: 280px;
+}
+
+.home-wrapper {
+    margin: 0 auto;
+    max-width: 1200px;
+}

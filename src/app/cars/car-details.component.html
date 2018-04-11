@@ -1,0 +1,75 @@
+<div *ngIf="car">
+    <h1>{{car.make}} {{car.model}}</h1>
+  <div class="page-wrapper details-page">
+      <img src="{{car.img}}" width="400" appRounding="'20px'" /> <br />
+
+      <button (click)="showEditMode()" class="edit-btn">Edit car</button>
+      <button (click)="showReadonlyMode()" class="edit-btn">Save locally</button>
+
+      <div id="readonly">
+        <b>Owner:</b> {{ car.owner }} <br />
+        <b>Price:</b> {{ car.price }} <br />
+        <b>Description:</b> {{ car.description }} <br />
+        <b>Engine:</b> {{ car.engine | engine: car.engine }}
+      </div>
+
+      <form #carForm="ngForm" name="carForm" (submit)="editCar()" id="edit-form">
+          <label for="owner">Owner:</label>
+          <input 
+            type="text"
+            name="owner"
+            id="owner"
+            required
+            [(ngModel)]="car.owner"
+            #owner="ngModel"
+          />
+          <small [hidden]="owner.valid || owner.pristine">The field is required.</small>
+          <br />
+          <label for="price">Price:</label>
+          <input 
+            type="text"
+            name="price"
+            id="price"
+            required
+            [(ngModel)]="car.price"
+            #price="ngModel"
+          />
+          <small [hidden]="price.valid || price.pristine">The field is required.</small>
+          <br />
+
+          <label for="description">Description:</label>
+          <textarea 
+            type="text"
+            name="description"
+            id="description"
+            [(ngModel)]="car.description"
+            #description="ngModel"
+          ></textarea>
+          <br />
+
+          <label for="engine">Engine:</label>
+          <input 
+            type="text"
+            name="engine"
+            id="engine"
+            [(ngModel)]="car.engine"
+            #engine="ngModel"
+          />
+          <br />
+          <button class="edit-btn">Save on server</button>
+      </form>
+
+
+      <h2 >Comments:</h2>
+      <add-comment></add-comment>
+      <div class="comments-wrapper">
+        <button (click)="allComments()">All comments</button>
+        <button (click)="detailComments('Price')">Comments for price</button>
+        <button (click)="detailComments('Engine')">Comments for engine</button>
+        <button (click)="detailComments('Owner')">Comments for owner</button>
+      </div>
+      <div *ngFor="let comment of commentsToShow" class="comment">
+        {{comment.text}} <br />
+      </div>
+  </div>
+</div>
